@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Morse Code</title>
+	<meta name="author" content="arielvb"/>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link type="text/css" href="3party/jquery/css/cupertino/jquery-ui-1.8.10.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="3party/jquery/js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="3party/jquery/js/jquery-ui-1.8.10.custom.min.js"></script>	
+	<link type="text/css" href="morse.css" rel="stylesheet" />
+	<style type="text/css">
+				body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 20px;}
+				h1 {font-size:30px; color:#2779AA;margin:0px;}
+				h1 .subtitle { vertical-align:middle; font-size:20px; color:#000;}
+				ul#icons {margin: 0; padding: 0;}
+				ul#icons li {margin: 2px; padding: 4px 0; float:left; list-style: none;}
+				ul#icons span.ui-icon { margin: 0 4px;}
+	</style>
+
+	<script type="text/javascript" src="morse.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#tabs").tabs({ fx: { opacity: 'toggle' }});
+		})
+	</script>
+	
+</head>
+<body onload="$.morseUI.init()">
+	<h1><span class="subtitle">International</span> Morse Code</h1>
+	
+	<div id="tabs">
+		<ul>
+			<li><a href="#translator">Morse Code</a></li>
+			<li><a href="#learnMore">Learn more</a></li>
+			<li><a href="#about">About</a></li>
+		</ul>
+	<div id="translator">
+		Your text is:<br/>
+		<textarea cols="100" id="text">Write your text here</textarea><br/>
+		<input type="button" value="to Morse" onclick="$.morseUI.toMorse('text', 'morse')"/>
+		<input type="button" value="Clear" onclick="$.morseUI.clear()"/><br/>
+		<span id="source" style="font-weight:bold">&nbsp;</span> in Morse is:<br/>
+		<textarea id="morse" cols="100"></textarea><br/>
+		<input type="button" value="to Text" onclick="$.morseUI.toText('morse', 'text')"/>
+		<div style="margin-top:20px">
+			<div id="blinker" style="float:left; margin-right:50px; text-align:center">
+				<canvas id="morse_blink" width="150" height="150">
+				</canvas>
+				<br/>
+				Blinker *<br/>
+				<ul id="icons" style="margin:auto; width:50px">
+					<li class="ui-state-default ui-corner-all"><a href="javascript:$.morseUI.on()" class="ui-icon ui-icon-play"></a> </li><li class="ui-state-default ui-corner-all">
+				<a href="javascript:$.morseUI.off()" class="ui-icon ui-icon-stop"></a></li>
+				</ul>
+			</div>
+			<div style="text-align:center">
+			<canvas id="morse_image" width="600" height="150">
+			</canvas>
+			<br/>
+				Image *
+			</div>
+		</div>
+	</div>
+	<div style="clear:both"></div>
+	<div id="learnMore">
+		When I was developing this mini-project I search for some related stuff, I found some very interetingy:<br/>
+		<ul>
+			<li><a href="https://secure.wikimedia.org/wikipedia/en/wiki/Morse_code">Morse Code on Wikipedia</a></li>
+			<li><a href="http://morsecode.scphillips.com/">Morse Code by Stephen</a> a Morse Code translator writed in Java, and published under GPL </li>
+		</ul>
+	</div>
+	<div id="about">
+		This is a personal project, I develop this application to learn a little of html5 canvas element.
+		<br/>
+		:)
+	</div>
+	</div>
+	
+	<noscript>
+		This page requires javascript.
+	</noscript>
+	<p style="clear:both;margin-top:40px">
+		&copy; arielvb.com
+	</p>
+</body>
+</html>
